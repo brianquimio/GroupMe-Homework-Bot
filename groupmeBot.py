@@ -2,7 +2,6 @@ import requests
 import datetime
 
 base_url = 'https://api.groupme.com/v3/'
-token = 'ndEZoqu72sDFpcaxkpNK7S1DQyiV8DP13ifQt0Ae'
 bot_id = 'bd42d28ae5e3b685f3085876e7'
 text_url = base_url + 'bots/post?bot_id=' + bot_id + '&text='
 
@@ -14,7 +13,7 @@ def addAssignment(name, due) :
     global assignments
     assignments[name] = due
 
-#format = month/day/16 5a/5p
+
 def formatDueDate(due) :
     dueDay = due.split('/')
     dueTime = dueDay[2].split(' ')
@@ -39,6 +38,7 @@ def formatDueDate(due) :
 
     return datetime.datetime(year+2000, month, day, hour)
 
+
 def printExistingAssignments () :
     global assignments
     for name in assignments :
@@ -59,6 +59,7 @@ def findAssignments () :
             diffStr = str(diff)
             alert = name + ' is due in ' + diffStr[:-13] + ' hours' #, on ' + assignments[name] 
             requests.post(text_url + alert) 
+
 
 addAssignment('Networks Hw1', '2/1/16 11a')
 addAssignment('Mobile Hw1: App Reviews', '2/3/16 11p')
