@@ -55,7 +55,7 @@ def findAssignments () :
     for name in assignments :
         d = formatDueDate(assignments[name])
         if now < d and d < oneWeek :
-            diff = oneWeek - d
+            diff = d - now
             diffStr = str(diff)
             alert = name + ' is due in ' + diffStr[:-13] + ' hours' #, on ' + assignments[name] 
             requests.post(text_url + alert) 
